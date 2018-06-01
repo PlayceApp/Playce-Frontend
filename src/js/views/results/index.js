@@ -26,16 +26,40 @@ const InfoContainer = styled.div`
 `;
 
 export default class ResultsView extends Component {
-   render() {
-      const { changingView } = this.props;
-      const position = { lat: 35.282752, lng: -120.659616 };
-      console.log(this.props);
+   state = {
+      results: [
+         {
+            address: '667 Marsh St San Luis Obispo CA 93401',
+            category: 'restaurant',
+            latitude: 35.2774,
+            longitude: -120.664,
+            name: 'Sumo Sushi',
+            price: 2,
+            rating: 3.5,
+         },
+      ],
+   };
+
+   getMap = () => {
+      const { results } = this.state;
+      const currResult = results[0];
+      const { latitude, longitude } = currResult;
+      const position = { lat: latitude, lng: longitude };
 
       return (
-         <Container changingView={changingView}>
-            <MapMapContainer>
-               <MapContainer position={position}/>
-            </MapMapContainer>
+         <MapMapContainer>
+            <MapContainer position={position} />
+         </MapMapContainer>
+      );
+   };
+
+   render() {
+      //const { changingView } = this.props;
+      const position = { lat: 35.282752, lng: -120.659616 };
+
+      return (
+         <Container changingView={false}>
+            {this.getMap()}
             <InfoContainer>
                <h3>Results</h3>
             </InfoContainer>

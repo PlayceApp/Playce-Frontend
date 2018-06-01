@@ -52,7 +52,7 @@ const views = {
    categories: <CategoryView />,
    questionnaire: <QuestionnaireView />,
    about: <AboutView />,
-   results: <ResultsView />
+   results: <ResultsView />,
 };
 
 export default class Playce extends Component {
