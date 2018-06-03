@@ -43,6 +43,14 @@ export default class MainView extends Component {
       });
    };
 
+   playces = () => {
+      this.props.onEvent({
+         type: 'new-view',
+         view: { name: 'playces', props: {} },
+      });
+
+   }
+
    beginAnimation() {
       setTimeout(() => {
          this.setState({ showButtons: true });
@@ -76,7 +84,7 @@ export default class MainView extends Component {
                   size="15vh"
                   text="My Playces"
                   color={color.bubbles[0]}
-                  onClick={this.start}
+                  onClick={this.playces}
                />
             </MenuButtonContainer>
          </Container>

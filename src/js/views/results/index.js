@@ -7,6 +7,7 @@ import Header from './components/header';
 import Reviews from './components/reviews';
 import Photos from './components/photos';
 import DirectionsButton from './components/directions';
+import SaveButton from './components/save';
 import LoadingCover from './components/loading_cover';
 
 const Container = styled.div`
@@ -43,6 +44,7 @@ export default class ResultsView extends Component {
       reviews: [],
       businessId: null,
       ready: false,
+      isSaved: false,
       results: [
          {
             address: '339 Marsh St San Luis Obispo CA 93401 USA',
@@ -55,6 +57,30 @@ export default class ResultsView extends Component {
          },
       ],
    };
+
+   handleEvent = (options) => {
+      switch(options.type) {
+         case 'update-playces':
+            localStorage.playces = JSON.stringify(options.playces);
+            this.checkIsSaved();
+         break;
+         default:
+            return;
+      }
+   }
+
+   checkIsSaved() {
+      const { results } = this.state;
+      const playces = localStorage.playces ? JSON.parse(localStorage.playces) : [];
+      for (let i in playces) {
+         const playce = playces[i];
+         if (playce.name === results[0].name) {
+            this.setState({ isSaved: true });
+         }
+         return;
+      }
+      this.setState({ isSaved: false });
+   }
 
    getMap = () => {
       const { business } = this.state;
@@ -99,18 +125,19 @@ export default class ResultsView extends Component {
 
    componentDidMount() {
       this.getBusinessDetails();
+      this.checkIsSaved();
    }
 
    render() {
-      const { results, reviews } = this.state;
-      const { name, rating, category } = results[0];
-      const { business, ready } = this.state;
+      const { business, ready, results, reviews, isSaved } = this.state;
+      const { rating, category } = results[0];
 
       return (
          <Container changingView={false}>
             <LoadingCover isOpen={!ready} />
             <InfoContainer>
                <Header business={business} rating={rating} type={category} />
+               <SaveButton isSaved={isSaved} result={results[0]} onEvent={this.handleEvent} />
                <Photos photos={business ? business.photos : null}/>
                <Reviews reviews={reviews} />
             </InfoContainer>

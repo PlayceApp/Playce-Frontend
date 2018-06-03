@@ -22,28 +22,22 @@ const BubbleContainer = styled.div`
    align-items: center;
    align-content: center;
    flex: 1;
-   max-width: 60vh;
+   max-width: 50em;
    margin: 0 auto;
 `;
 
 const Header = styled.h1`
+   margin: 0;
    text-align: center;
 `;
 
-const Section = styled.div`
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 10vh;
+const Empty = styled.h2`
+   font-size: 3vh;
+   color: rgb(171, 171, 171);
+   font-weight: normal;
 `;
 
-const Mission = styled.h2`
-   text-align: center;
-   font-weight: 300;
-   max-width: 30em;
-   margin: 0 auto;
-`;
-
-export default class AboutView extends Component {
+export default class MyPlaycesView extends Component {
    state = {
       playces: [],
    };
@@ -58,36 +52,31 @@ export default class AboutView extends Component {
       }
    }
 
-   visitPortfolio = url => {
-      window.open(url, '_blank');
-   }
+   viewPlayce = playce => {
+      this.props.onEvent({
+         type: 'new-view',
+         view: {
+            name: 'results',
+            props: {
+               results: [playce],
+            },
+         },
+         showBackButton: true,
+      });
+   };
 
    getBubbles = () => {
-      const people = [
-         'Tanner Villarete',
-         'Katie Mei',
-         'Spoorty Vemula',
-         'Kent Tran',
-         'Zane Ali',
-      ];
+      const { playces } = this.state;
 
-      const portfolios = [
-         'http://tannerv.com',
-         'https://www.linkedin.com/in/katherinemei/',
-         'https://www.linkedin.com/in/spoorthy-vemula-7412b5a7/',
-         'https://www.linkedin.com/in/kent-tran-10682011a/',
-         'https://www.linkedin.com/in/zane-ali-3a476a146/'
-      ];
-
-      return people.map((name, index) => {
+      return playces.map((playce, index) => {
          const c = index > 5 ? color.bubbles[index - 5] : color.bubbles[index];
          return (
             <Bubble
-               key={`${name}-${index}`}
+               key={`${playce.name}-${index}`}
                size="15vh"
-               text={name}
+               text={playce.name}
                color={c}
-               onClick={() => this.visitPortfolio(portfolios[index])}
+               onClick={() => this.viewPlayce(playce)}
             />
          );
       });
@@ -95,17 +84,18 @@ export default class AboutView extends Component {
 
    render() {
       const { changingView } = this.props;
+      const { playces } = this.state;
 
       return (
          <Container changingView={changingView}>
-            <Section>
-               <Header>About</Header>
-               <Mission>{`Playce is about discovery. You answer a few questions and we'll show you the best stuff around.`}</Mission>
-            </Section>
-            <Section>
-               <Header>The Crew</Header>
-               <BubbleContainer>{this.getBubbles()}</BubbleContainer>
-            </Section>
+            <Header>My Playces</Header>
+            <BubbleContainer>
+               {playces.length ? (
+                  this.getBubbles()
+               ) : (
+                  <Empty>{'Nothing here :('}</Empty>
+               )}
+            </BubbleContainer>
          </Container>
       );
    }

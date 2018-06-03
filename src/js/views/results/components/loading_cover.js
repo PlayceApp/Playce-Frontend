@@ -37,7 +37,7 @@ export default class LoadingCover extends Component {
          this.setState({
             isClosing: false,
          });
-      }, 310);
+      }, 300);
    }
 
    componentDidUpdate(prevProps, prevState) {

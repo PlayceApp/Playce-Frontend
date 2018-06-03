@@ -7,6 +7,7 @@ import CategoryView from './views/category/index';
 import AboutView from './views/about/index';
 import QuestionnaireView from './views/questionnaire/index';
 import ResultsView from './views/results/index';
+import MyPlaycesView from './views/playces/index';
 
 injectGlobal`
    @font-face {
@@ -51,6 +52,7 @@ const HomeIcon = styled.div`
 
 const views = {
    main: <MainView />,
+   playces: <MyPlaycesView />,
    categories: <CategoryView />,
    questionnaire: <QuestionnaireView />,
    about: <AboutView />,
@@ -59,7 +61,7 @@ const views = {
 
 export default class Playce extends Component {
    state = {
-      viewStack: [{ name: 'results', props: {} }],
+      viewStack: [{ name: 'main', props: {} }],
       changingView: false,
       emptyingViews: false,
    };

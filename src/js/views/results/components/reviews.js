@@ -5,7 +5,6 @@ import { animation } from '../../../toolbox';
 const Container = styled.div`
    margin-top: 24px;
    padding: 16px 0;
-   background: #efefef;
    animation: ${animation.fadeIn} 0.3s;
 `;
 
