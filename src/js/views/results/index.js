@@ -39,42 +39,38 @@ const InfoContainer = styled.div`
 `;
 
 export default class ResultsView extends Component {
-   state = {
-      business: {},
-      reviews: [],
-      businessId: null,
-      ready: false,
-      isSaved: false,
-      results: [
-         {
-            address: '339 Marsh St San Luis Obispo CA 93401 USA',
-            category: 'restaurant',
-            latitude: 35.2871,
-            longitude: -120.665,
-            name: 'Frame Works',
-            price: 2,
-            rating: 3.5,
-         },
-      ],
-   };
+   constructor(props) {
+      super(props);
+      this.state = {
+         business: {},
+         reviews: [],
+         businessId: null,
+         ready: false,
+         isSaved: false,
+         results: props.results,
+         currentResult: 0,
+      };
+   }
 
-   handleEvent = (options) => {
-      switch(options.type) {
+   handleEvent = options => {
+      switch (options.type) {
          case 'update-playces':
             localStorage.playces = JSON.stringify(options.playces);
             this.checkIsSaved();
-         break;
+            break;
          default:
             return;
       }
-   }
+   };
 
    checkIsSaved() {
-      const { results } = this.state;
-      const playces = localStorage.playces ? JSON.parse(localStorage.playces) : [];
+      const { results, currentResult } = this.state;
+      const playces = localStorage.playces
+         ? JSON.parse(localStorage.playces)
+         : [];
       for (let i in playces) {
          const playce = playces[i];
-         if (playce.name === results[0].name) {
+         if (playce.name === results[currentResult].name) {
             this.setState({ isSaved: true });
          }
          return;
@@ -99,27 +95,27 @@ export default class ResultsView extends Component {
    };
 
    getBusinessDetails() {
-      const { results } = this.state;
-      const { address, name } = results[0];
+      const { results, currentResult } = this.state;
+      const { address, name } = results[currentResult];
 
       const yelp = new YelpManager({ address, name });
-      yelp.getBusiness()
+      yelp
+         .getBusiness()
          .then(response => {
             const _id = response.businesses[0].id;
-            yelp.getDetails(_id)
-               .then(business => {
-                  this.setState({ business });
+            yelp.getDetails(_id).then(business => {
+               this.setState({ business });
+            });
+            yelp.getReviews(_id).then(reviews => {
+               this.setState({
+                  reviews,
+                  ready: true,
                });
-            yelp.getReviews(_id)
-               .then(reviews => {
-                  this.setState({
-                     reviews,
-                     ready: true
-                  });
-               });
+            });
          })
          .catch(e => {
-            console.log(e);
+            this.setState({ currentResult: currentResult + 1 });
+            this.getBusinessDetails();
          });
    }
 
@@ -129,16 +125,28 @@ export default class ResultsView extends Component {
    }
 
    render() {
-      const { business, ready, results, reviews, isSaved } = this.state;
-      const { rating, category } = results[0];
+      console.log(this.props);
+      const {
+         business,
+         ready,
+         results,
+         reviews,
+         isSaved,
+         currentResult,
+      } = this.state;
+      const { rating, category } = results[currentResult];
 
       return (
          <Container changingView={false}>
             <LoadingCover isOpen={!ready} />
             <InfoContainer>
                <Header business={business} rating={rating} type={category} />
-               <SaveButton isSaved={isSaved} result={results[0]} onEvent={this.handleEvent} />
-               <Photos photos={business ? business.photos : null}/>
+               <SaveButton
+                  isSaved={isSaved}
+                  result={results[currentResult]}
+                  onEvent={this.handleEvent}
+               />
+               <Photos photos={business ? business.photos : null} />
                <Reviews reviews={reviews} />
             </InfoContainer>
             {this.getMap()}
