@@ -11,7 +11,7 @@ const Container = styled.div`
    display: flex;
    flex: 1;
    flex-direction: column;
-   padding-top: 10vh;
+   padding-top: 6vh;
    transition: all 0.5s ease;
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
    opacity: ${props => (props.changingView ? 0 : 1)};
@@ -27,7 +27,7 @@ const Title = styled.h2`
    font-size: 3em;
    text-align: center;
    margin: 0;
-   line-height: 1.3;
+   line-height: 1.5;
 `;
 
 const Subtitle = styled.h3`

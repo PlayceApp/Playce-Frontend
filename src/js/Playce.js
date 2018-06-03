@@ -7,7 +7,7 @@ import GTM from '../fonts/GT/GTWalsheim-Medium.woff2';
 import GTB from '../fonts/GT/GTWalsheim-Bold.woff2';
 import GTRO from '../fonts/GT/GTWalsheim-RegularOblique.woff2';
 import GTBO from '../fonts/GT/GTWalsheim-BoldOblique.woff2';
-import { Home } from 'react-feather';
+import Home from '../images/home.svg';
 import MainView from './views/main/index';
 import CategoryView from './views/category/index';
 import AboutView from './views/about/index';
@@ -96,6 +96,15 @@ const HomeIcon = styled.div`
    opacity: ${props => (props.hide ? 0 : 1)};
    pointer-events: ${props => (props.hide ? 'none' : 'all')};
    transition: all 0.35s ease;
+   background-image: url('${Home}');
+   background-size: contain;
+   background-repeat: no-repeat;
+   margin: 14px 0 0 16px;
+   height: 69px;
+   width: 69px;
+   &:hover {
+      opacity: 0.7;
+   }
 `;
 
 const views = {
@@ -175,7 +184,6 @@ export default class Playce extends Component {
             <HomeIcon
                hide={viewStack.length === 1}
                onClick={this.emptyViewStack}>
-               <Home />
             </HomeIcon>
             <ViewContainer hidden={emptyingViews}>
                {this.getCurrentView()}
