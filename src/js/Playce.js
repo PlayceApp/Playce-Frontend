@@ -26,6 +26,8 @@ const Container = styled.div`
    bottom: 0;
    left: 0;
    right: 0;
+   display: flex;
+   flex-direction: column;
 `;
 
 const ViewContainer = styled.div`
@@ -57,7 +59,7 @@ const views = {
 
 export default class Playce extends Component {
    state = {
-      viewStack: [{ name: 'main', props: {} }],
+      viewStack: [{ name: 'results', props: {} }],
       changingView: false,
       emptyingViews: false,
    };

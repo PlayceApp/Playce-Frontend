@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import LoadingIndicator from 'react-loading-indicator';
+import StarRatings from 'react-star-ratings';
 
 export const animation = {
    scaleEnter: keyframes`
@@ -11,6 +12,11 @@ export const animation = {
    `,
    fadeIn: keyframes`
       0% {
+         opacity: 0;
+      }
+   `,
+   fadeOut: keyframes`
+      100% {
          opacity: 0;
       }
    `,
@@ -56,7 +62,6 @@ export const color = {
    bubbles: ['#71D2E7', '#FF7272', '#9CDA6C', '#B979F2', '#FF9E75'],
 };
 
-
 const LoaderContainer = styled.div`
    animation: ${animation.bounce} 0.5s;
 `;
@@ -66,5 +71,16 @@ export const Loader = () => {
       <LoaderContainer>
          <LoadingIndicator segmentLength={8} segmentWidth={3} />
       </LoaderContainer>
+   );
+};
+
+export const Stars = ({ rating }) => {
+   return (
+      <StarRatings
+         rating={rating}
+         starRatedColor={'#FFC342'}
+         starDimension="20px"
+         starSpacing="1px"
+      />
    );
 };
