@@ -5,7 +5,7 @@ import Bubble from '../../../components/bubble';
 import { color, animation } from '../../../toolbox';
 
 const QuestionCount = styled.h2`
-   font-family: 'SF Pro Display';
+   font-family: 'GT Walsheim';
    font-size: 5vh;
    text-align: center;
    margin: 1vh 0 0 0;

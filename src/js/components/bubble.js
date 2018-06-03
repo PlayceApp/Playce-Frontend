@@ -13,7 +13,7 @@ const BubbleContainer = styled.div`
    margin: 1em;
    border-radius: 50%;
    color: white;
-   font-family: 'SF Pro Display';
+   font-family: 'GT Walsheim';
    cursor: pointer;
    animation: ${props => props.isEntering ? 'bubbleEnter 2s ease' : 'revolve 10s infinite'};
    transition: all 1s ease;

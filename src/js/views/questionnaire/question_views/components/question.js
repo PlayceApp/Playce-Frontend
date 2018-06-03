@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Text = styled.h2`
-   font-family: "SF Pro Display";
+   font-family: "GT Walsheim";
    font-size: 4vh;
    text-align: center;
    font-weight: 300;

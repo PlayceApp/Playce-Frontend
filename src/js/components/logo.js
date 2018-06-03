@@ -13,6 +13,7 @@ const LogoContainer = styled.div`
    border-radius: 50%;
    font-size: 5vh;
    font-family: Yikes;
+   font-weight: 300;
    display: flex;
    align-items: center;
    text-align: center;

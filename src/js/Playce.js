@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
-import SFProDisplay from '../fonts/SF-Pro-Display-Regular.otf';
+import GT from '../fonts/GT/GTWalsheim.woff2';
+import GTLO from '../fonts/GT/GTWalsheim-LightOblique.woff2';
+import GTL from '../fonts/GT/GTWalsheim-Light.woff2';
+import GTM from '../fonts/GT/GTWalsheim-Medium.woff2';
+import GTB from '../fonts/GT/GTWalsheim-Bold.woff2';
+import GTRO from '../fonts/GT/GTWalsheim-RegularOblique.woff2';
+import GTBO from '../fonts/GT/GTWalsheim-BoldOblique.woff2';
 import { Home } from 'react-feather';
 import MainView from './views/main/index';
 import CategoryView from './views/category/index';
@@ -10,14 +16,59 @@ import ResultsView from './views/results/index';
 
 injectGlobal`
    @font-face {
-      font-family: SFProDisplay;
-      src: url('${SFProDisplay}') format('opentype');
-   }
-
-   @font-face {
       font-family: yikes;
       src: url('files/fonts/yikes.ttf') format('truetype');
    }
+  
+   @font-face {
+      font-family: 'GT Walsheim';
+      src: url('${GT}') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+   }
+
+   @font-face {
+      font-family: 'GT Walsheim';
+      src: url('${GTLO}') format('woff2'),
+      font-weight: 300;
+      font-style: italic;
+  }
+  
+  @font-face {
+      font-family: 'GT Walsheim';
+      src: url('${GTL}') format('woff2'),
+      font-weight: 300;
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'GT Walsheim';
+      src: url('${GTM}') format('woff2'),
+      font-weight: 500;
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'GT Walsheim';
+      src: url('${GTB}') format('woff2'),
+      font-weight: bold;
+      font-style: normal;
+  }
+  
+  @font-face {
+      font-family: 'GT Walsheim';
+      src: url('${GTRO}') format('woff2'),
+      font-weight: normal;
+      font-style: italic;
+  }
+  
+  @font-face {
+      font-family: 'GT Walsheim';
+      src: url('${GTBO}') format('woff2'),
+      font-weight: bold;
+      font-style: italic;
+  }
+  
 `;
 
 const Container = styled.div`
