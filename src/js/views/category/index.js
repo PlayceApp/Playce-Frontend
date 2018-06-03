@@ -27,6 +27,7 @@ const Title = styled.h2`
    font-size: 3em;
    text-align: center;
    margin: 0;
+   line-height: 1.3;
 `;
 
 const Subtitle = styled.h3`
@@ -34,6 +35,7 @@ const Subtitle = styled.h3`
    font-weight: 300;
    text-align: center;
    margin: 0;
+   line-height: 1.5;
 `;
 
 const LoadingContainer = styled.div`

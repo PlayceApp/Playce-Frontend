@@ -17,10 +17,8 @@ const BubbleContainer = styled.div`
    cursor: pointer;
    animation: ${props => props.isEntering ? 'bubbleEnter 2s ease' : 'revolve 10s infinite'};
    transition: all 1s ease;
-   transition-delay: 0.5s;
    opacity: ${props => props.clicked || props.hidden ? 0 : 1};
    pointer-events: ${props => props.clicked || props.hidden ? 'none' : 'default'};
-
    &:nth-child(2n) {
       animation: ${props => props.isEntering ? 'bubbleEnterOpposite 2s ease' : 'revolveOpposite 15s infinite'};
    }

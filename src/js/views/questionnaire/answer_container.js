@@ -7,14 +7,12 @@ const Container = styled.div`
    align-items: center;
    height: 15vh;
    width: 100%;
-   max-width: 50em;
    margin: 0.5em auto;
-   padding: 0 1em;
+   padding: 0 2em;
    color: white;
-   border-radius: 8px;
+   box-sizing: border-box;
    transition: all 0.5s ease-in-out;
-   background: rgba(230, 230, 230, 0.9);
-   backdrop-filter: blur(15px);
+   background: #dddee0;
    transform: ${props => (props.hidden ? 'translateY(100%)' : null)};
    opacity: ${props => (props.hidden ? 0 : 1)};
 `;
