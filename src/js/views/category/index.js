@@ -41,7 +41,7 @@ const Subtitle = styled.h3`
 const LoadingContainer = styled.div`
    display: flex;
    justify-content: center;
-   margin: 2.5vh 0;
+   margin: 0.75vh 0;
    transition: all 0.35s ease;
    opacity: ${props => (props.hidden ? 0 : 1)};
 `;
