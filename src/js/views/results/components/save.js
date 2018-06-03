@@ -47,7 +47,7 @@ const SaveButton = ({ isSaved, result, onEvent }) => {
                type: 'update-playces',
                playces: playces,
             });
-            break;
+            return;
          }
       }
    };

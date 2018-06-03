@@ -8,6 +8,7 @@ import Reviews from './components/reviews';
 import Photos from './components/photos';
 import DirectionsButton from './components/directions';
 import SaveButton from './components/save';
+import RerollButton from './components/reroll';
 import LoadingCover from './components/loading_cover';
 
 const Container = styled.div`
@@ -21,6 +22,10 @@ const Container = styled.div`
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
    opacity: ${props => (props.changingView ? 0 : 1)};
    animation: ${animation.scaleEnter} 0.5s;
+`;
+
+const ActionContainer = styled.div`
+   display: flex;
 `;
 
 const MapMapContainer = styled.div`
@@ -47,6 +52,7 @@ export default class ResultsView extends Component {
          businessId: null,
          ready: false,
          isSaved: false,
+         canReroll: true,
          results: props.results,
          currentResult: 0,
       };
@@ -58,24 +64,57 @@ export default class ResultsView extends Component {
             localStorage.playces = JSON.stringify(options.playces);
             this.checkIsSaved();
             break;
+         case 'reroll':
+            this.reroll();
+            break;
          default:
             return;
       }
    };
+
+   reroll() {
+      const { results, currentResult } = this.state;
+      let i = currentResult + 1;
+      if (results[i]) {
+         this.setState(
+            {
+               currentResult: i,
+               ready: false,
+            },
+            () => {
+               this.getBusinessDetails();
+               this.checkIsSaved();
+               this.checkRerollStatus();
+            },
+         );
+      }
+   }
 
    checkIsSaved() {
       const { results, currentResult } = this.state;
       const playces = localStorage.playces
          ? JSON.parse(localStorage.playces)
          : [];
+      let foundMatch = false;
+
       for (let i in playces) {
          const playce = playces[i];
+         console.log(playce.name);
          if (playce.name === results[currentResult].name) {
-            this.setState({ isSaved: true });
+            foundMatch = true;
          }
-         return;
       }
-      this.setState({ isSaved: false });
+      this.setState({ isSaved: foundMatch });
+   }
+
+   checkRerollStatus() {
+      const { results, currentResult } = this.state;
+
+      if (results[currentResult + 1]) {
+         this.setState({ canReroll: true });
+      } else {
+         this.setState({ canReroll: false });
+      }
    }
 
    getMap = () => {
@@ -122,6 +161,7 @@ export default class ResultsView extends Component {
    componentDidMount() {
       this.getBusinessDetails();
       this.checkIsSaved();
+      this.checkRerollStatus();
    }
 
    render() {
@@ -132,6 +172,7 @@ export default class ResultsView extends Component {
          results,
          reviews,
          isSaved,
+         canReroll,
          currentResult,
       } = this.state;
       const { rating, category } = results[currentResult];
@@ -141,11 +182,17 @@ export default class ResultsView extends Component {
             <LoadingCover isOpen={!ready} />
             <InfoContainer>
                <Header business={business} rating={rating} type={category} />
-               <SaveButton
-                  isSaved={isSaved}
-                  result={results[currentResult]}
-                  onEvent={this.handleEvent}
-               />
+               <ActionContainer>
+                  <SaveButton
+                     isSaved={isSaved}
+                     result={results[currentResult]}
+                     onEvent={this.handleEvent}
+                  />
+                  <RerollButton
+                     canReroll={canReroll}
+                     onEvent={this.handleEvent}
+                  />
+               </ActionContainer>
                <Photos photos={business ? business.photos : null} />
                <Reviews reviews={reviews} />
             </InfoContainer>

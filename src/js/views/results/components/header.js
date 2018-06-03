@@ -42,7 +42,6 @@ const RatingContainer = styled.div`
 
 const Header = ({ business, rating, type }) => {
    if (!business.name) return null;
-   console.log(business);
    const { name, location, review_count, is_closed, price } = business;
    type = type.charAt(0).toUpperCase() + type.slice(1);
 

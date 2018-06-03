@@ -15,7 +15,6 @@ const Header = styled.h2`
 
 const Reviews = ({ reviews }) => {
    if (!reviews.reviews) return null;
-   console.log(reviews);
 
    return (
       <Container>
