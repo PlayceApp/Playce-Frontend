@@ -6,7 +6,7 @@ import Bubble from '../../../components/bubble';
 import ApiManager from '../../../api_manager';
 
 const Container = styled.div`
-   height: 75.5vh;
+   height: 76.5vh;
    display: flex;
    flex-direction: column;
    animation: ${props =>

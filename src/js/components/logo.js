@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const LogoContainer = styled.div`
    display: flex;
    flex-direction: column;
-   margin: 1.6em auto 0.2em auto;
+   margin: 1em auto 0 auto;
    height: 30vh;
    width: 30vh;
    background: ${props => props.isEntering ? '#ff4848' : 'transparent'};

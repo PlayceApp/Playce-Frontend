@@ -5,7 +5,7 @@ import { animation, color } from '../../toolbox';
 const Container = styled.div`
    display: flex;
    align-items: center;
-   height: 15vh;
+   height: 14vh;
    width: 100%;
    margin: 0.5em auto;
    padding: 0 2em;

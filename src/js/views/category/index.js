@@ -27,7 +27,7 @@ const Title = styled.h2`
    font-size: 3em;
    text-align: center;
    margin: 0;
-   line-height: 1.5;
+   line-height: 1.6;
 `;
 
 const Subtitle = styled.h3`
