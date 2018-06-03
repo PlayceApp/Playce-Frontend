@@ -13,7 +13,6 @@ const LogoContainer = styled.div`
    border-radius: 50%;
    font-size: 5vh;
    font-family: Yikes;
-   font-weight: 300;
    display: flex;
    align-items: center;
    text-align: center;
@@ -42,6 +41,7 @@ const LogoContainer = styled.div`
 
 const LogoText = styled.h2`
    margin: auto;
+   font-weight: 300;
 `;
 
 export default class Logo extends Component {
