@@ -29,7 +29,7 @@ const BubbleContainer = styled.div`
    align-items: center;
    align-content: center;
    flex: 1;
-   max-width: 50em;
+   max-width: 48em;
    margin: 0 auto;
 `;
 

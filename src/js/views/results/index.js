@@ -24,14 +24,14 @@ const Container = styled.div`
 
 const ActionContainer = styled.div`
    display: flex;
-   max-width: 50em;
+   max-width: 48em;
    margin: auto;
    padding: 0 100px;
 `;
 
 const MapMapContainer = styled.div`
    position: relative;
-   max-width: 26em;
+   max-width: 31em;
    border-left: 3px solid #ddd;
    flex: 1;
 

@@ -5,7 +5,7 @@ import { animation } from '../../../toolbox';
 const Container = styled.div`
    margin-top: 24px;
    padding: 5px 100px 90px 100px;
-   max-width: 50em;
+   max-width: 48em;
    margin: 0 auto;
    animation: ${animation.fadeIn} 0.3s;
 `;

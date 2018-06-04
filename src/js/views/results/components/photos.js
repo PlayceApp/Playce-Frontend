@@ -7,8 +7,8 @@ const Container = styled.div`
    overflow: auto;
    flex-direction: column;
    animation: ${animation.fadeIn} 0.3s;
-   max-width: 50em;
-   margin: 16px auto 24px auto;
+   max-width: 48em;
+   margin: 16px auto 22px auto;
    padding: 0 100px;
 `;
 
