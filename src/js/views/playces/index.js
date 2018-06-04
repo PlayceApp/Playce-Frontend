@@ -7,7 +7,7 @@ const Container = styled.div`
    display: flex;
    flex: 1;
    flex-direction: column;
-   padding-top: 10vh;
+   padding-top: 28vh;
    transition: all 0.5s ease;
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
    opacity: ${props => (props.changingView ? 0 : 1)};
@@ -22,8 +22,9 @@ const BubbleContainer = styled.div`
    align-items: center;
    align-content: center;
    flex: 1;
-   max-width: 50em;
+   max-width: 48em;
    margin: 0 auto;
+   padding-bottom: 13em;
 `;
 
 const Header = styled.h1`

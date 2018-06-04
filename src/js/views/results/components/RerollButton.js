@@ -4,16 +4,16 @@ import { color, animation } from '../../../toolbox';
 
 const Container = styled.div`
    display: flex;
-   padding-left: 24px;
+   padding-right: 24px;
 `;
 
-const Button = styled.h3`
-   padding: 12px 24px;
+const Button = styled.p`
+   padding: 11px 24px;
    background: ${color.bubbles[1]};
    color: white;
    margin: 0;
    font-weight: normal;
-   border-radius: 8px;
+   border-radius: 80px;
    cursor: pointer;
    transition: all 0.15s ease;
    box-shadow: 0 5px 10px ${'#71d2e763'};

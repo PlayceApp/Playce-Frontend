@@ -4,13 +4,13 @@ import { animation } from '../../../toolbox';
 
 const Container = styled.div`
    margin-top: 24px;
-   padding: 16px 0;
+   padding: 5px 100px 90px 100px;
+   max-width: 48em;
+   margin: 0 auto;
    animation: ${animation.fadeIn} 0.3s;
 `;
 
 const Header = styled.h2`
-   margin: 0;
-   padding: 0 24px;
 `;
 
 const Reviews = ({ reviews }) => {
@@ -31,7 +31,7 @@ const Reviews = ({ reviews }) => {
 
 const ReviewContainer = styled.div`
    display: flex;
-   margin: 16px 0 0 24px;
+   margin: 16px 0 0 0;
 `;
 
 const UserImage = styled.img`
@@ -45,16 +45,17 @@ const TextContainer = styled.div`
    display: flex;
    flex-direction: column;
    width: 80%;
-   max-width: 35em;
+   max-width: 40em;
 `;
 
-const ReviewText = styled.h3`
+const ReviewText = styled.p`
    font-weight: normal;
    margin: 0;
+   line-height: 1.35;
 `;
 
-const Author = styled.h4`
-   margin: 8px 0;
+const Author = styled.p`
+   margin: 5px 0;
 `;
 
 const Review = ({ user, text, rating }) => {

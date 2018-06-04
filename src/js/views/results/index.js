@@ -12,11 +12,9 @@ import RerollButton from './components/RerollButton';
 import LoadingCover from './components/loading_cover';
 
 const Container = styled.div`
-   position: relative;
    display: flex;
    flex: 1;
    width: 100%;
-   max-width: 70em;
    margin: 0 auto;
    transition: all 0.5s ease;
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
@@ -26,11 +24,15 @@ const Container = styled.div`
 
 const ActionContainer = styled.div`
    display: flex;
+   max-width: 48em;
+   margin: auto;
+   padding: 0 100px;
 `;
 
 const MapMapContainer = styled.div`
    position: relative;
-   max-width: 20em;
+   max-width: 31em;
+   border-left: 3px solid #ddd;
    flex: 1;
 
    @media screen and (max-width: 750px) {

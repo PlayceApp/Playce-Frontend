@@ -6,24 +6,24 @@ const Container = styled.div`
    bottom: 0;
    left: 0;
    right: 0;
-   height: 8em;
+   height: 7.5em;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
    backdrop-filter: blur(10px);
-   background: rgba(0, 0, 0, 0.5);
+   background: rgba(0, 0, 0, 0.38);
 `;
 
-const Address = styled.h3`
+const Address = styled.p`
    margin: 0;
-   margin-bottom: 12px;
+   margin-bottom: 13px;
    color: white;
 `;
 
-const Button = styled.h3`
-   padding: 12px 24px;
-   background: dodgerblue;
+const Button = styled.p`
+   padding: 10px 26px;
+   background: #3380F3;
    color: white;
    margin: 0;
    font-weight: normal;
