@@ -66,7 +66,7 @@ export default class AboutView extends Component {
       const people = [
          'Tanner Villarete',
          'Katie Mei',
-         'Spoorty Vemula',
+         'Spoorthy Vemula',
          'Kent Tran',
          'Zane Ali',
       ];
