@@ -2,67 +2,202 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { animation } from '../../toolbox';
 import MapContainer from './components/map';
+import YelpManager from './yelp_manager';
+import Header from './components/header';
+import Reviews from './components/reviews';
+import Photos from './components/photos';
+import DirectionsButton from './components/directions';
+import SaveButton from './components/save';
+import RerollButton from './components/reroll';
+import LoadingCover from './components/loading_cover';
 
 const Container = styled.div`
+   position: relative;
    display: flex;
    flex: 1;
+   width: 100%;
+   max-width: 70em;
+   margin: 0 auto;
    transition: all 0.5s ease;
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
    opacity: ${props => (props.changingView ? 0 : 1)};
    animation: ${animation.scaleEnter} 0.5s;
-   overflow: auto;
+`;
+
+const ActionContainer = styled.div`
+   display: flex;
 `;
 
 const MapMapContainer = styled.div`
    position: relative;
    max-width: 20em;
+   padding-top: 4em;
    flex: 1;
+
+   @media screen and (max-width: 750px) {
+      display: none;
+   }
 `;
 
 const InfoContainer = styled.div`
-   display: flex;
-   flex-direction: column;
    flex: 1;
+   overflow: auto;
 `;
 
 export default class ResultsView extends Component {
-   state = {
-      results: [
-         {
-            address: '667 Marsh St San Luis Obispo CA 93401',
-            category: 'restaurant',
-            latitude: 35.2774,
-            longitude: -120.664,
-            name: 'Sumo Sushi',
-            price: 2,
-            rating: 3.5,
-         },
-      ],
+   constructor(props) {
+      super(props);
+      this.state = {
+         business: {},
+         reviews: [],
+         businessId: null,
+         ready: false,
+         isSaved: false,
+         canReroll: true,
+         results: props.results,
+         currentResult: 0,
+      };
+   }
+
+   handleEvent = options => {
+      switch (options.type) {
+         case 'update-playces':
+            localStorage.playces = JSON.stringify(options.playces);
+            this.checkIsSaved();
+            break;
+         case 'reroll':
+            this.reroll();
+            break;
+         default:
+            return;
+      }
    };
 
+   reroll() {
+      const { results, currentResult } = this.state;
+      let i = currentResult + 1;
+      if (results[i]) {
+         this.setState(
+            {
+               currentResult: i,
+               ready: false,
+            },
+            () => {
+               this.getBusinessDetails();
+               this.checkIsSaved();
+               this.checkRerollStatus();
+            },
+         );
+      }
+   }
+
+   checkIsSaved() {
+      const { results, currentResult } = this.state;
+      const playces = localStorage.playces
+         ? JSON.parse(localStorage.playces)
+         : [];
+      let foundMatch = false;
+
+      for (let i in playces) {
+         const playce = playces[i];
+         console.log(playce.name);
+         if (playce.name === results[currentResult].name) {
+            foundMatch = true;
+         }
+      }
+      this.setState({ isSaved: foundMatch });
+   }
+
+   checkRerollStatus() {
+      const { results, currentResult } = this.state;
+
+      if (results[currentResult + 1]) {
+         this.setState({ canReroll: true });
+      } else {
+         this.setState({ canReroll: false });
+      }
+   }
+
    getMap = () => {
-      const { results } = this.state;
-      const currResult = results[0];
-      const { latitude, longitude } = currResult;
+      const { business } = this.state;
+      const { name } = business;
+      if (!name) return null;
+      const address = business.location.address1;
+      const { latitude, longitude } = business.coordinates;
       const position = { lat: latitude, lng: longitude };
 
       return (
          <MapMapContainer>
             <MapContainer position={position} />
+            <DirectionsButton name={name} address={address} />
          </MapMapContainer>
       );
    };
 
+   getBusinessDetails() {
+      const { results, currentResult } = this.state;
+      const { address, name } = results[currentResult];
+
+      const yelp = new YelpManager({ address, name });
+      yelp
+         .getBusiness()
+         .then(response => {
+            const _id = response.businesses[0].id;
+            yelp.getDetails(_id).then(business => {
+               this.setState({ business });
+            });
+            yelp.getReviews(_id).then(reviews => {
+               this.setState({
+                  reviews,
+                  ready: true,
+               });
+            });
+         })
+         .catch(e => {
+            this.setState({ currentResult: currentResult + 1 });
+            this.getBusinessDetails();
+         });
+   }
+
+   componentDidMount() {
+      this.getBusinessDetails();
+      this.checkIsSaved();
+      this.checkRerollStatus();
+   }
+
    render() {
-      //const { changingView } = this.props;
-      const position = { lat: 35.282752, lng: -120.659616 };
+      console.log(this.props);
+      const {
+         business,
+         ready,
+         results,
+         reviews,
+         isSaved,
+         canReroll,
+         currentResult,
+      } = this.state;
+      const { rating, category } = results[currentResult];
 
       return (
          <Container changingView={false}>
-            {this.getMap()}
+            <LoadingCover isOpen={!ready} />
             <InfoContainer>
-               <h3>Results</h3>
+               <Header business={business} rating={rating} type={category} />
+               <ActionContainer>
+                  <SaveButton
+                     isSaved={isSaved}
+                     result={results[currentResult]}
+                     onEvent={this.handleEvent}
+                  />
+                  <RerollButton
+                     canReroll={canReroll}
+                     onEvent={this.handleEvent}
+                  />
+               </ActionContainer>
+               <Photos photos={business ? business.photos : null} />
+               <Reviews reviews={reviews} />
             </InfoContainer>
+            {this.getMap()}
          </Container>
       );
    }

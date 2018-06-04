@@ -110,7 +110,7 @@ export default class MultiChoiceView extends Component {
          view: {
             name: 'results',
             props: {
-               data,
+               results: data.results,
             },
          },
       });

@@ -13,13 +13,14 @@ import CategoryView from './views/category/index';
 import AboutView from './views/about/index';
 import QuestionnaireView from './views/questionnaire/index';
 import ResultsView from './views/results/index';
+import MyPlaycesView from './views/playces/index';
 
 injectGlobal`
    @font-face {
       font-family: yikes;
       src: url('files/fonts/yikes.ttf') format('truetype');
    }
-  
+
    @font-face {
       font-family: 'GT Walsheim';
       src: url('${GT}') format('woff2');
@@ -33,42 +34,42 @@ injectGlobal`
       font-weight: 300;
       font-style: italic;
   }
-  
+
   @font-face {
       font-family: 'GT Walsheim';
       src: url('${GTL}') format('woff2'),
       font-weight: 300;
       font-style: normal;
   }
-  
+
   @font-face {
       font-family: 'GT Walsheim';
       src: url('${GTM}') format('woff2'),
       font-weight: 500;
       font-style: normal;
   }
-  
+
   @font-face {
       font-family: 'GT Walsheim';
       src: url('${GTB}') format('woff2'),
       font-weight: bold;
       font-style: normal;
   }
-  
+
   @font-face {
       font-family: 'GT Walsheim';
       src: url('${GTRO}') format('woff2'),
       font-weight: normal;
       font-style: italic;
   }
-  
+
   @font-face {
       font-family: 'GT Walsheim';
       src: url('${GTBO}') format('woff2'),
       font-weight: bold;
       font-style: italic;
   }
-  
+
 `;
 
 const Container = styled.div`
@@ -77,6 +78,8 @@ const Container = styled.div`
    bottom: 0;
    left: 0;
    right: 0;
+   display: flex;
+   flex-direction: column;
 `;
 
 const ViewContainer = styled.div`
@@ -109,6 +112,7 @@ const HomeIcon = styled.div`
 
 const views = {
    main: <MainView />,
+   playces: <MyPlaycesView />,
    categories: <CategoryView />,
    questionnaire: <QuestionnaireView />,
    about: <AboutView />,
@@ -126,6 +130,9 @@ export default class Playce extends Component {
       switch (options.type) {
          case 'new-view':
             this.newView(options);
+            break;
+         case 'empty-view-stack':
+            this.emptyViewStack();
             break;
          default:
             console.error('Error: Empty event');
