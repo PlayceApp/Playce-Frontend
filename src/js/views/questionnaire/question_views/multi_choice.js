@@ -5,14 +5,14 @@ import Bubble from '../../../components/bubble';
 import { color, animation } from '../../../toolbox';
 
 const QuestionCount = styled.h2`
-   font-family: 'SF Pro Display';
+   font-family: 'GT Walsheim';
    font-size: 5vh;
    text-align: center;
    margin: 1vh 0 0 0;
 `;
 
 const Container = styled.div`
-   height: 80vh;
+   height: 76.5vh;
    display: flex;
    flex-direction: column;
    animation: ${props =>

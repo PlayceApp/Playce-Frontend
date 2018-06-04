@@ -11,7 +11,7 @@ const Container = styled.div`
    display: flex;
    flex: 1;
    flex-direction: column;
-   padding-top: 10vh;
+   padding-top: 6vh;
    transition: all 0.5s ease;
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
    opacity: ${props => (props.changingView ? 0 : 1)};
@@ -27,6 +27,7 @@ const Title = styled.h2`
    font-size: 3em;
    text-align: center;
    margin: 0;
+   line-height: 1.6;
 `;
 
 const Subtitle = styled.h3`
@@ -34,12 +35,13 @@ const Subtitle = styled.h3`
    font-weight: 300;
    text-align: center;
    margin: 0;
+   line-height: 1.5;
 `;
 
 const LoadingContainer = styled.div`
    display: flex;
    justify-content: center;
-   margin: 2.5vh 0;
+   margin: 0.75vh 0;
    transition: all 0.35s ease;
    opacity: ${props => (props.hidden ? 0 : 1)};
 `;

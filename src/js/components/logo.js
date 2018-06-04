@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const LogoContainer = styled.div`
    display: flex;
    flex-direction: column;
-   margin: 1em auto;
+   margin: 1em auto 0 auto;
    height: 30vh;
    width: 30vh;
    background: ${props => props.isEntering ? '#ff4848' : 'transparent'};
@@ -41,6 +41,7 @@ const LogoContainer = styled.div`
 
 const LogoText = styled.h2`
    margin: auto;
+   font-weight: 300;
 `;
 
 export default class Logo extends Component {
