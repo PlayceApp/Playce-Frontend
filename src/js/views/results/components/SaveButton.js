@@ -4,7 +4,7 @@ import { color, animation } from '../../../toolbox';
 
 const Container = styled.div`
    display: flex;
-   padding-left: 24px;
+   padding-right: 24px;
 `;
 
 const Button = styled.h3`

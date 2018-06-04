@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { animation } from '../../../toolbox';
 
 const Container = styled.div`
-   padding: 0 24px;
    display: flex;
    overflow: auto;
    flex-direction: column;
    animation: ${animation.fadeIn} 0.3s;
+   max-width: 40em;
+   margin: 0 auto;
 `;
 
 const Header = styled.h2`

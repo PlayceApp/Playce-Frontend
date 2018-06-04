@@ -5,12 +5,13 @@ import { animation } from '../../../toolbox';
 const Container = styled.div`
    margin-top: 24px;
    padding: 16px 0;
+   max-width: 40em;
+   margin: 0 auto;
    animation: ${animation.fadeIn} 0.3s;
 `;
 
 const Header = styled.h2`
    margin: 0;
-   padding: 0 24px;
 `;
 
 const Reviews = ({ reviews }) => {
@@ -31,7 +32,7 @@ const Reviews = ({ reviews }) => {
 
 const ReviewContainer = styled.div`
    display: flex;
-   margin: 16px 0 0 24px;
+   margin: 16px 0 0 0;
 `;
 
 const UserImage = styled.img`

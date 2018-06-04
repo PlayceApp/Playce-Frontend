@@ -16,7 +16,6 @@ const Container = styled.div`
    display: flex;
    flex: 1;
    width: 100%;
-   max-width: 70em;
    margin: 0 auto;
    transition: all 0.5s ease;
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
@@ -26,11 +25,13 @@ const Container = styled.div`
 
 const ActionContainer = styled.div`
    display: flex;
+   max-width: 40em;
+   margin: auto;
 `;
 
 const MapMapContainer = styled.div`
    position: relative;
-   max-width: 20em;
+   max-width: 24em;
    padding-top: 4em;
    flex: 1;
 
