@@ -4,7 +4,7 @@ import { animation } from '../../../toolbox';
 
 const Container = styled.div`
    margin-top: 24px;
-   padding: 5px 100px;
+   padding: 5px 100px 90px 100px;
    max-width: 50em;
    margin: 0 auto;
    animation: ${animation.fadeIn} 0.3s;
@@ -45,7 +45,7 @@ const TextContainer = styled.div`
    display: flex;
    flex-direction: column;
    width: 80%;
-   max-width: 35em;
+   max-width: 40em;
 `;
 
 const ReviewText = styled.p`

@@ -8,7 +8,7 @@ const Container = styled.div`
    flex-direction: column;
    animation: ${animation.fadeIn} 0.3s;
    max-width: 50em;
-   margin: 0 auto 80px auto;
+   margin: 16px auto 24px auto;
    padding: 0 100px;
 `;
 
