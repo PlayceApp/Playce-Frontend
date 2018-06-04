@@ -3,5 +3,5 @@ projectKey=playce-frontend
 serverUrl=https://sonarcloud.io
 serverVersion=7.2.0.12516
 dashboardUrl=https://sonarcloud.io/dashboard/index/playce-frontend
-ceTaskId=AWPJDPBRCPImwYt77Ge7
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWPJDPBRCPImwYt77Ge7
+ceTaskId=AWPJDrT2Ce6eSPJhzL1H
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWPJDrT2Ce6eSPJhzL1H
