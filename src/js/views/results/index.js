@@ -12,7 +12,6 @@ import RerollButton from './components/RerollButton';
 import LoadingCover from './components/loading_cover';
 
 const Container = styled.div`
-   position: relative;
    display: flex;
    flex: 1;
    width: 100%;
@@ -32,7 +31,7 @@ const ActionContainer = styled.div`
 
 const MapMapContainer = styled.div`
    position: relative;
-   max-width: 24em;
+   max-width: 25em;
    flex: 1;
 
    @media screen and (max-width: 750px) {

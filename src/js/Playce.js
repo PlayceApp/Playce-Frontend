@@ -91,6 +91,8 @@ const ViewContainer = styled.div`
 `;
 
 const HomeIcon = styled.div`
+   position: fixed;
+   z-index: 100;
    display: flex;
    align-items: center;
    height: 5vh;

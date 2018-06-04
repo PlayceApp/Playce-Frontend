@@ -14,7 +14,7 @@ const Container = styled.div`
    opacity: ${props => (props.changingView ? 0 : 1)};
    animation: ${animation.scaleEnter} 0.5s;
    overflow: auto;
-   padding-top: 4em;
+   padding-top: 5.2em;
 `;
 
 const QuestionContainer = styled.div`

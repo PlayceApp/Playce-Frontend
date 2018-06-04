@@ -11,7 +11,7 @@ const Container = styled.div`
    display: flex;
    flex: 1;
    flex-direction: column;
-   padding-top: 6vh;
+   padding-top: 8vh;
    transition: all 0.5s ease;
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
    opacity: ${props => (props.changingView ? 0 : 1)};
