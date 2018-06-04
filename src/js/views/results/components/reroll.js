@@ -18,7 +18,7 @@ const Button = styled.h3`
    transition: all 0.15s ease;
    box-shadow: 0 5px 10px ${'#71d2e763'};
    animation: ${animation.fadeIn} 0.3s;
-   display: ${props => props.disabled ? 'none' : 'block'};
+   display: ${props => props.canReroll ? 'block' : 'none'};
 
    &:hover {
       filter: brightness(110%);

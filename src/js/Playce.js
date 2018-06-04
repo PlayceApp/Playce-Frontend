@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 import SFProDisplay from '../fonts/SF-Pro-Display-Regular.otf';
-import { Home } from 'react-feather';
+import Header from './components/header';
 import MainView from './views/main/index';
 import CategoryView from './views/category/index';
 import AboutView from './views/about/index';
@@ -39,17 +39,6 @@ const ViewContainer = styled.div`
    opacity: ${props => (props.hidden ? 0 : 1)};
 `;
 
-const HomeIcon = styled.div`
-   display: flex;
-   align-items: center;
-   height: 5vh;
-   padding: 0 1em;
-   cursor: pointer;
-   opacity: ${props => (props.hide ? 0 : 1)};
-   pointer-events: ${props => (props.hide ? 'none' : 'all')};
-   transition: all 0.35s ease;
-`;
-
 const views = {
    main: <MainView />,
    playces: <MyPlaycesView />,
@@ -70,6 +59,9 @@ export default class Playce extends Component {
       switch (options.type) {
          case 'new-view':
             this.newView(options);
+            break;
+         case 'empty-view-stack':
+            this.emptyViewStack();
             break;
          default:
             console.error('Error: Empty event');
@@ -125,11 +117,9 @@ export default class Playce extends Component {
 
       return (
          <Container>
-            <HomeIcon
-               hide={viewStack.length === 1}
-               onClick={this.emptyViewStack}>
-               <Home />
-            </HomeIcon>
+            <Header
+               hidden={viewStack.length === 1}
+               onEvent={this.handleEvent} />
             <ViewContainer hidden={emptyingViews}>
                {this.getCurrentView()}
             </ViewContainer>

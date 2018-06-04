@@ -16,7 +16,7 @@ const Container = styled.div`
    display: flex;
    flex: 1;
    width: 100%;
-   max-width: 80em;
+   max-width: 70em;
    margin: 0 auto;
    transition: all 0.5s ease;
    transform: ${props => (props.changingView ? 'scale(1.5)' : 'scale(1)')};
@@ -31,6 +31,7 @@ const ActionContainer = styled.div`
 const MapMapContainer = styled.div`
    position: relative;
    max-width: 20em;
+   padding-top: 4em;
    flex: 1;
 
    @media screen and (max-width: 750px) {

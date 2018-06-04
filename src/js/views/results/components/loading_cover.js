@@ -11,9 +11,11 @@ const Container = styled.div`
    left: 0;
    right: 0;
    display: ${props => (props.isOpen || props.isClosing ? 'flex' : 'none')};
+   transform: ${props => props.isClosing ? 'scale(1.5)' : null};
+   transition: all 0.3s ease;
    align-items: center;
    justify-content: center;
-   animation: ${props => props.isClosing ? animation.fadeOut : animation.fadeIn} 0.3s;
+   animation: ${props => props.isClosing ? animation.fadeOut : animation.scaleEnter} 0.3s;
 `;
 
 const LoadingContainer = styled.div`
@@ -26,11 +28,13 @@ const LoadingContainer = styled.div`
 export default class LoadingCover extends Component {
    state = {
       isClosing: false,
+      aboutToClose: false
    };
 
    animateClosed() {
       this.setState({
          isClosing: true,
+         aboutToClose: false
       });
 
       setTimeout(() => {
@@ -43,16 +47,19 @@ export default class LoadingCover extends Component {
    componentDidUpdate(prevProps, prevState) {
       const closeRequested = prevProps.isOpen && !this.props.isOpen;
       if (closeRequested) {
-         this.animateClosed();
+         this.setState({ aboutToClose: true });
+         setTimeout(() => {
+            this.animateClosed();
+         }, 1000);
       }
    }
 
    render() {
       const { isOpen } = this.props;
-      const { isClosing } = this.state;
+      const { isClosing, aboutToClose } = this.state;
 
       return (
-         <Container isOpen={isOpen || isClosing} isClosing={isClosing}>
+         <Container isOpen={isOpen || isClosing || aboutToClose} isClosing={isClosing}>
             <LoadingContainer>
                <h2>Loading Playce...</h2>
                <Loader />
