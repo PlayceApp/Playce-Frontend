@@ -55,7 +55,7 @@ const phrases = [
    'Parsing the blockchain...',
 ];
 
-export default class MultiChoiceView extends Component {
+export default class Conclusion extends Component {
    state = {
       phraseIndex: 0,
       loading: true,

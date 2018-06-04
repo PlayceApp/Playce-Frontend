@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { animation } from '../../toolbox';
 import AnswerContainer from './answer_container';
-import MultiChoiceView from './question_views/multi_choice';
-import ConclusionView from './question_views/conclusion';
+import MultiChoiceView from './question_views/MultiChoiceView';
+import ConclusionView from './question_views/Conclusion';
 
 const Container = styled.div`
    display: flex;

@@ -107,7 +107,7 @@ class CategoryView extends Component {
 
    componentDidMount() {
       if (!this.props.isGeolocationAvailable) {
-         alert("Can't find your location!");
+         console.error("Error: Can't find your location");
          return;
       }
    }

@@ -6,9 +6,9 @@ import YelpManager from './yelp_manager';
 import Header from './components/header';
 import Reviews from './components/reviews';
 import Photos from './components/photos';
-import DirectionsButton from './components/directions';
-import SaveButton from './components/save';
-import RerollButton from './components/reroll';
+import DirectionsButton from './components/DirectionsButton';
+import SaveButton from './components/SaveButton';
+import RerollButton from './components/RerollButton';
 import LoadingCover from './components/loading_cover';
 
 const Container = styled.div`
