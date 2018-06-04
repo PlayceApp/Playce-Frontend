@@ -5,6 +5,7 @@
   "homepage": "/Playce",
   "dependencies": {
     "google-maps-react": "^2.0.2",
+    "lint": "^1.1.2",
     "react": "^16.3.2",
     "react-confirm": "^0.1.17",
     "react-dom": "^16.3.2",
