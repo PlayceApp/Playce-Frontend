@@ -8,6 +8,9 @@ const LogoContainer = styled.div`
    height: 30vh;
    width: 30vh;
    background: ${props => props.isEntering ? '#ff4848' : 'transparent'};
+   background: -webkit-linear-gradient(#FF8585, #FFA08B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
    color: ${props => (props.isEntering ? 'white' : 'rgb(130, 130, 130);')};
    text-align: center;
    border-radius: 50%;

@@ -4,14 +4,13 @@ import { animation } from '../../../toolbox';
 
 const Container = styled.div`
    margin-top: 24px;
-   padding: 16px 0;
-   max-width: 40em;
+   padding: 5px 80px;
+   max-width: 50em;
    margin: 0 auto;
    animation: ${animation.fadeIn} 0.3s;
 `;
 
 const Header = styled.h2`
-   margin: 0;
 `;
 
 const Reviews = ({ reviews }) => {
@@ -49,13 +48,14 @@ const TextContainer = styled.div`
    max-width: 35em;
 `;
 
-const ReviewText = styled.h3`
+const ReviewText = styled.p`
    font-weight: normal;
    margin: 0;
+   line-height: 1.35;
 `;
 
-const Author = styled.h4`
-   margin: 8px 0;
+const Author = styled.p`
+   margin: 5px 0;
 `;
 
 const Review = ({ user, text, rating }) => {

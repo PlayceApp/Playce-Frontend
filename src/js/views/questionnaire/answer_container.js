@@ -7,7 +7,7 @@ const Container = styled.div`
    align-items: center;
    height: 14vh;
    width: 100%;
-   margin: 0.5em auto;
+   margin: 0.5em auto 0 auto;
    padding: 0 2em;
    color: white;
    box-sizing: border-box;

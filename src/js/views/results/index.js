@@ -25,14 +25,14 @@ const Container = styled.div`
 
 const ActionContainer = styled.div`
    display: flex;
-   max-width: 40em;
+   max-width: 50em;
    margin: auto;
+   padding: 0 80px;
 `;
 
 const MapMapContainer = styled.div`
    position: relative;
    max-width: 24em;
-   padding-top: 4em;
    flex: 1;
 
    @media screen and (max-width: 750px) {
@@ -195,8 +195,8 @@ export default class ResultsView extends Component {
                      onEvent={this.handleEvent}
                   />
                </ActionContainer>
-               <Photos photos={business ? business.photos : null} />
                <Reviews reviews={reviews} />
+               <Photos photos={business ? business.photos : null} />
             </InfoContainer>
             {this.getMap()}
          </Container>

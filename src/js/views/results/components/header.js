@@ -4,13 +4,13 @@ import { animation, Stars } from '../../../toolbox';
 
 const TitleContainer = styled.div`
    margin: 4em auto 0 auto;
-   max-width: 40em;
-   padding: 24px 0;
+   max-width: 50em;
+   padding: 24px 80px;
    animation: ${animation.fadeIn} 0.3s;
 `;
 
 const Title = styled.h1`
-   font-size: 48px;
+   font-size: 55px;
    margin: 0;
 `;
 
