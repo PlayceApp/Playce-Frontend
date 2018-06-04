@@ -6,7 +6,7 @@ export default class ApiManager {
 
    getQuestionnaire(category) {
       return this.makeRequest({
-         url: `/questionnaires/${category.toLowerCase()}.json`,
+         url: `${this.url}/${category.toLowerCase()}`,
          data: {},
       });
    }

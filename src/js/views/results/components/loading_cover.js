@@ -15,7 +15,7 @@ const Container = styled.div`
    transition: all 0.3s ease;
    align-items: center;
    justify-content: center;
-   animation: ${props => props.isClosing ? animation.fadeOut : animation.scaleEnter} 0.3s;
+   animation: ${props => props.isClosing ? animation.fadeOut : null} 0.3s;
 `;
 
 const LoadingContainer = styled.div`
