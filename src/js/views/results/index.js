@@ -31,7 +31,6 @@ const ActionContainer = styled.div`
 const MapMapContainer = styled.div`
    position: relative;
    max-width: 20em;
-   padding-top: 4em;
    flex: 1;
 
    @media screen and (max-width: 750px) {

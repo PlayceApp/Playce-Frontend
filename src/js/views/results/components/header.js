@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { animation, Stars } from '../../../toolbox';
 
 const TitleContainer = styled.div`
-   margin-top: 4em;
    padding: 24px;
    animation: ${animation.fadeIn} 0.3s;
 `;
