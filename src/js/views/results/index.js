@@ -35,7 +35,7 @@ const MapMapContainer = styled.div`
    border-left: 3px solid #ddd;
    flex: 1;
 
-   @media screen and (max-width: 750px) {
+   @media screen and (max-width: 1000px) {
       display: none;
    }
 `;
@@ -128,7 +128,7 @@ export default class ResultsView extends Component {
       const position = { lat: latitude, lng: longitude };
 
       return (
-         <MapMapContainer>
+         <MapMapContainer key={address}>
             <MapContainer position={position} />
             <DirectionsButton name={name} address={address} />
          </MapMapContainer>

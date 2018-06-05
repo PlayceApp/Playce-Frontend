@@ -10,12 +10,25 @@ const Container = styled.div`
 const LoadingContainer = () => <Loader />;
 
 export class MapContainer extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         position: props.position
+      }
+   }
+
+   static getDerivedStateFromProps(nextProps) {
+      return {
+         position: nextProps.position
+      }
+   }
+
    render() {
-      const { position } = this.props;
+      const { position } = this.state;
 
       return (
          <Container>
-            <Map google={this.props.google} zoom={18} initialCenter={position}>
+            <Map key={position} google={this.props.google} zoom={18} initialCenter={position}>
                <Marker position={position} />
             </Map>
          </Container>
