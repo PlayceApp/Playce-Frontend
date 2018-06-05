@@ -1,3 +1,5 @@
+import ApiManager from '../../api_manager';
+
 export default class YelpManager {
    constructor({ address, name }) {
       this.address = address;
@@ -6,12 +8,13 @@ export default class YelpManager {
       this.token =
          'XXd5Lxab-L-zaltX4OdylVclMO6gAII1vqit4k0K8TnGs4pLkZw8StxTbJ2n6MUhRiheA3a_8nuDOxf7BG96QOmuypitKndTlWFwvbFQ1w-6oMGQkvzFjoDjvyMUW3Yx';
       this.corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
+      this.api = new ApiManager();
    }
 
    getBusiness() {
-      const { address, name } = this;
+      const { address, name, api } = this;
 
-      return this.makeRequest({
+      return api.makeRequest({
          url: `${this.corsAnywhere}${
             this.url
          }/search?location=${address}&term=${name}`,
@@ -25,7 +28,9 @@ export default class YelpManager {
    }
 
    getDetails(_id) {
-      return this.makeRequest({
+      const { api } = this;
+
+      return api.makeRequest({
          url: `${this.corsAnywhere}${
             this.url
          }/${_id}`,
@@ -39,7 +44,9 @@ export default class YelpManager {
    }
 
    getReviews(_id) {
-      return this.makeRequest({
+      const { api } = this;
+
+      return api.makeRequest({
          url: `${this.corsAnywhere}${
             this.url
          }/${_id}/reviews`,
@@ -49,25 +56,6 @@ export default class YelpManager {
                Authorization: `Bearer ${this.token}`,
             },
          },
-      });
-   }
-
-   makeRequest(options) {
-      const { url, data } = options;
-
-      return new Promise(function(resolve, reject) {
-         fetch(url, data)
-            .then(response => {
-               response.json().then(data => {
-                  if (response.status >= 300) {
-                     reject(data.message);
-                  }
-                  resolve(data);
-               });
-            })
-            .catch(e => {
-               reject(Error(e));
-            });
       });
    }
 }

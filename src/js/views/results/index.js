@@ -101,7 +101,7 @@ export default class ResultsView extends Component {
 
       for (let i in playces) {
          const playce = playces[i];
-         console.log(playce.name);
+
          if (playce.name === results[currentResult].name) {
             foundMatch = true;
          }
@@ -167,7 +167,6 @@ export default class ResultsView extends Component {
    }
 
    render() {
-      console.log(this.props);
       const {
          business,
          ready,

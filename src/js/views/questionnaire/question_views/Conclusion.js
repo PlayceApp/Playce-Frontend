@@ -84,7 +84,6 @@ export default class Conclusion extends Component {
          const answer = answers[i];
          packet[answer.shorthand] = answer.answer;
       }
-      console.log(packet);
 
       api
          .getResults(packet)
