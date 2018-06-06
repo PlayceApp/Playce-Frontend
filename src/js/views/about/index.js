@@ -95,6 +95,7 @@ export default class AboutView extends Component {
 
    render() {
       const { changingView } = this.props;
+      const hi = "hello";
 
       return (
          <Container changingView={changingView}>
