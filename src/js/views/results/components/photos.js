@@ -9,6 +9,7 @@ const Container = styled.div`
    animation: ${animation.fadeIn} 0.3s;
    max-width: 48em;
    margin: 16px auto 22px auto;
+   padding: 0px 100px;
 `;
 
 const Header = styled.h2`
